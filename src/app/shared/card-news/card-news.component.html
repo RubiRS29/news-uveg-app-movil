@@ -1,0 +1,21 @@
+<ion-card [ngClass]="'card-ion-content'">
+  <img alt="Silhouette of mountains" [src]="newData.image" />
+  <ion-card-header>
+    <ion-card-title>{{newData.title}}</ion-card-title>
+    <ion-card-subtitle>{{newData.date}}</ion-card-subtitle>
+  </ion-card-header>
+
+
+  <ion-card-content>
+    {{newData.description}}
+  </ion-card-content>
+<!-- 
+  <ion-button color="favorite">
+    <ion-icon slot="icon-only" name="heart"> Favoritos </ion-icon>
+  </ion-button> -->
+  
+  <ion-button color="danger" (click)="onDelete()">
+    <ion-icon slot="icon-only" name="close-outline" >Eliminar</ion-icon>
+  </ion-button>
+
+</ion-card>

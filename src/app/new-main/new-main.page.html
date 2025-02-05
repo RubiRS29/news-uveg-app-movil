@@ -1,0 +1,14 @@
+<ion-content [ngClass]="'ion-padding-md ion-lg-padding-lg ion-sm-padding-sm'">
+  <div ngClass="ion-content">
+    <h1>Noticias</h1>
+
+    <div *ngFor="let newD of newsModelList">
+      <app-card-news 
+        [newData]="newD" 
+        [onDelete]="getDeleteFunction(newD.id)" > </app-card-news>
+    </div>
+
+  </div>
+  
+  <ion-toast #toast></ion-toast>
+</ion-content>

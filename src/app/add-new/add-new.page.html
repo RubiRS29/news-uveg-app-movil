@@ -1,0 +1,50 @@
+<ion-content [ngClass]="'ion-padding-md ion-lg-padding-lg ion-sm-padding-sm'">
+  <div ngClass="ion-content">
+    <h1>Agregar Noticia</h1>
+
+    <form [formGroup]="addNew">
+      <!-- Título -->
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <div *ngIf="addNew.get('title')?.invalid && addNew.get('title')?.touched">
+        <p class="error" *ngIf="addNew.get('title')?.errors?.['required']">El título es obligatorio.</p>
+        <p class="error" *ngIf="addNew.get('title')?.errors?.['minlength']">Debe tener al menos 10 caracteres.</p>
+      </div>
+
+      <!-- Descripción -->
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>
+      <div *ngIf="addNew.get('description')?.invalid && addNew.get('description')?.touched">
+        <p class="error" *ngIf="addNew.get('description')?.errors?.['required']">La descripción es obligatoria.</p>
+        <p class="error" *ngIf="addNew.get('description')?.errors?.['minlength']">Debe tener al menos 15 caracteres.</p>
+      </div>
+
+      <!-- Fecha -->
+      <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input type="date" formControlName="date"></ion-input>
+      </ion-item>
+      <div *ngIf="addNew.get('date')?.invalid && addNew.get('date')?.touched">
+        <p class="error" *ngIf="addNew.get('date')?.errors?.['required']">La fecha es obligatoria.</p>
+      </div>
+
+      <!-- Botón de enviar -->
+      <ion-button 
+        (click)="onSubmit()" 
+        color="magic-purple" 
+        class="ion-margin-top" 
+        expand="full" 
+        type="submit" 
+        [disabled]="addNew.invalid">
+        <ion-icon slot="start" name="star"></ion-icon>
+        Agregar
+      </ion-button>
+    </form>
+  </div>
+  <ion-toast #toast></ion-toast>
+</ion-content>
+
